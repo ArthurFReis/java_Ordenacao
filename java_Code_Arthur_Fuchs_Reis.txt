@@ -1,0 +1,78 @@
+import java.util.Arrays;
+public class Main {
+    public static void main(String[] args) {
+
+        int[] ids = {35, 98, 23, 43, 50};
+        int[] copynewIDS = Arrays.copyOf(ids, ids.length);
+
+        String[] names = {"John", "Peter", "Mariah", "Bill", "Chris"};
+        String[] copynewNames = Arrays.copyOf(names, names.length);
+        int[] numericOrder = {1,2,3,4,5};
+
+
+        int[] order = orderIDS(copynewIDS);
+        String[] order2 = onderNames(copynewNames);
+        String[] joined = joinIDSName(copynewIDS,copynewNames);
+        String[] newNumbers = newNumber(copynewNames, numericOrder);
+        String[] copynewNumbers = Arrays.copyOf(newNumbers, newNumbers.length);
+        String[] na = naReplace(copynewNumbers);
+
+        System.out.println("Original: " + Arrays.toString(ids));
+        System.out.println("Original: " + Arrays.toString(names));
+        System.out.println("=====================================");
+        System.out.println("Order: " + Arrays.toString(order));
+        System.out.println("Order: " + Arrays.toString(order2));
+        System.out.println("join: " + Arrays.toString(joined));
+        System.out.println("numericNumbers: " + Arrays.toString(newNumbers));
+        System.out.println("NA: " + Arrays.toString(na));
+
+
+    }
+    private static int[] orderIDS(int[] copynewIDS){
+            for (int i = 1; i<copynewIDS.length; i++){
+                for(int j =0; j<copynewIDS.length; j++){
+                    if(copynewIDS[i] < copynewIDS[j]){
+                        int num = copynewIDS[i];
+                        copynewIDS[i] = copynewIDS[j];
+                        copynewIDS[j] = num;
+
+                    }
+                }
+            }
+            return copynewIDS;
+        }
+
+        private static String[] onderNames(String[] copynewNames){
+            copynewNames[0] = "Mariah";
+            copynewNames[1] = "John";
+            copynewNames[2] = "Bill";
+            copynewNames[3] = "Chris";
+            copynewNames[4] = "Peter";
+            return copynewNames;
+        }
+
+
+    private static String[] joinIDSName(int[] ids, String[] names){
+        String[] mixture = new String[5];
+        for(int i = 0; i<ids.length;i++){
+            mixture[i] = ids[i] + "-" + names[i];
+        }
+        return mixture;
+    }
+    private static String[] newNumber(String[] names, int[] numericOrder){
+        String[] mixture2 = new String[5];
+        for(int i = 0; i<numericOrder.length;i++){
+            mixture2[i] = numericOrder[i] + "-" + names[i];
+        }
+        return mixture2;
+    }
+    private static String[] naReplace(String[] copynewNumbers){
+
+        copynewNumbers[1] = "2-NA";
+        copynewNumbers[3] = "4-NA";
+
+        return copynewNumbers;
+    }
+
+
+}
